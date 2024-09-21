@@ -3,9 +3,9 @@
     <section class="cabecalho-link">
       <img src="assets/logo.png" alt="">
       <div>
-        <button>
+        <button routerLink="/lista-contatos">
           <img class="seta" src="assets/arrow-left.png" alt="">
-          <a routerLink="/lista-contatos">Voltar</a>
+          <a>Voltar</a>
         </button>
       </div>
     </section>
@@ -19,7 +19,6 @@
     <div class="imagem-perfil">
       <img [src]="contato.avatar" alt="avatar">
       <h2><strong>{{ contato.nome }}</strong></h2>
-      
     </div>
     <app-separador></app-separador>
     <ul>
@@ -48,7 +47,7 @@
       <button (click)="excluir()" class="botao-excluir">
         Excluir contato
       </button>
-      <button class="botao-editar">
+      <button class="botao-editar" [routerLink]="['/formulario', contato.id]">
         Editar
       </button>
     </div>

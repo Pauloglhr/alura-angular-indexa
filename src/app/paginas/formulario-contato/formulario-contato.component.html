@@ -27,7 +27,7 @@
     >
   </div>
   @if (contatoForm.get('avatar')?.value !== '') {
-    <picture>
+    <picture style="display: flex; justify-content: center; align-items: center;">
       <img [src]="contatoForm.get('avatar')?.value" alt="" width="50%">
     </picture>
   }
