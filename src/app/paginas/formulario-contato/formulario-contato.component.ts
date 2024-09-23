@@ -6,6 +6,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ContainerComponent } from '../../componentes/container/container.component';
 import { SeparadorComponent } from '../../componentes/separador/separador.component';
 import { ContatoService } from '../../services/contato.service';
+import { MensagemErroComponent } from "../../componentes/mensagem-erro/mensagem-erro.component";
+import { CabecalhoComponent } from "../../componentes/cabecalho/cabecalho.component";
 
 @Component({
   selector: 'app-formulario-contato',
@@ -15,8 +17,10 @@ import { ContatoService } from '../../services/contato.service';
     ContainerComponent,
     SeparadorComponent,
     ReactiveFormsModule,
-    RouterLink
-  ],
+    RouterLink,
+    MensagemErroComponent,
+    CabecalhoComponent
+],
   templateUrl: './formulario-contato.component.html',
   styleUrl: './formulario-contato.component.css'
 })
@@ -54,6 +58,14 @@ export class FormularioContatoComponent implements OnInit{
         this.contatoForm.patchValue(contato)
       });
     }
+  }
+
+  obterControle(nome: string): FormControl {
+    const control = this.contatoForm.get(nome)
+    if(!control){
+      throw new Error(`Não foi possível encontrar o erro do tipo: ${nome}`)
+    }
+    return control as FormControl
   }
 
   salvarContato() {
