@@ -46,10 +46,13 @@ export class PerfilContatoComponent implements OnInit{
   }
 
   excluir() {
-    if(this.contato.id) {
-      this.contatoService.excluirContato(this.contato.id).subscribe(() => {
-        this.router.navigateByUrl('/lista-contatos')
-      })
+    const prompt = confirm(`Você deseja deletar o usuário ${this.contato.nome}?`)
+    if(prompt){
+      if(this.contato.id) {
+        this.contatoService.excluirContato(this.contato.id).subscribe(() => {
+          this.router.navigateByUrl('/lista-contatos')
+        })
+      }
     }
   }
 }
